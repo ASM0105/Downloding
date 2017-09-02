@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -37,13 +38,14 @@ public class MainActivity extends AppCompatActivity {
                 urlConnection = (HttpURLConnection)url.openConnection();
                 InputStream in = urlConnection.getInputStream();
                 InputStreamReader reader = new InputStreamReader(in);
-                int data = reader.read();
-                long i=0;
-                while(data!=-1){
-                    char current = (char) data;
-                    result +=current;
-                    data= reader.read();
+            //    int data = reader.read();
 
+                BufferedReader data1=new BufferedReader(reader);
+
+                String inputLine = null;
+                while ((inputLine = data1.readLine()) != null) {
+                      System.out.println("hii baby "+inputLine);
+                    result += inputLine;
                 }
 
             }
