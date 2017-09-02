@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 InputStream in = urlConnection.getInputStream();
                 InputStreamReader reader = new InputStreamReader(in);
                 int data = reader.read();
-
+                long i=0;
                 while(data!=-1){
                     char current = (char) data;
                     result +=current;
@@ -50,10 +50,13 @@ public class MainActivity extends AppCompatActivity {
             catch(Exception e){
                 e.printStackTrace();
             }
+            Log.i("URL content", result);
             return result;
         }
 
-    }
+
+
+   }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         DownloadTask task = new DownloadTask();
         try {
-            result=task.execute("http://browxy.com/").get();
-            Log.i("URL content", result);
+            task.execute("https://www.pastemagazine.com/articles/2017/02/the-top-100-pokemon-of-all-time.html?a=1");
+
         }
 
         catch (Exception e) {
